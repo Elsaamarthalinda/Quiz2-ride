@@ -7,6 +7,8 @@ package id.ac.polinema.quiz2;
  * Dipakai di Main untuk mencoba program. RideDispatcher TIDAK boleh membuat objek
  * kelas ini sendiri: objeknya harus diberikan dari luar lewat constructor.
  */
+
+
 public class CashPayment implements PaymentMethod {
 
     @Override
@@ -14,3 +16,4 @@ public class CashPayment implements PaymentMethod {
         System.out.println("Payment " + rideId + ": Rp " + amount);
     }
 }
+
