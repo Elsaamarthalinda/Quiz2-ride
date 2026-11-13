@@ -1,5 +1,7 @@
 package id.ac.polinema.quiz2;
 
+import java.util.ArrayList;
+import java.util.List;
 /**
  * Tempat bebas untuk mencoba programmu. Kelas ini TIDAK dinilai.
  *
@@ -15,6 +17,27 @@ package id.ac.polinema.quiz2;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Ojek Online: tulis percobaanmu di sini.");
+        
+        Passenger passenger = new Passenger("P1", "Elsa");
+
+        Ride bike = new BikeRide("L1", passenger, 5);
+        Ride car = new CarRide("L2", passenger, 5);
+
+        // Ongkos masing-masing perjalanan
+        System.out.println("Perjalanan sepeda motor: ongkos " + bike.calculateFare());
+        System.out.println("Perjalanan mobil: ongkos " + car.calculateFare() + ", biaya asuransi " + ((Insurable) car).insuranceFee());
+
+        // Jumlah kedua tarif lewat RideCalculator
+        List<Ride> rides = new ArrayList<>();
+        rides.add(bike);
+        rides.add(car);
+        System.out.println("Jumlah kedua tarif: " + RideCalculator.totalFare(rides));
+        System.out.println("Total asuransi: " + RideCalculator.totalInsurance(rides));
+
+        // Checkout lewat RideDispatcher dengan CashPayment
+        RideDispatcher dispatcher = new RideDispatcher(new CashPayment());
+        dispatcher.add(bike);
+        dispatcher.add(car);
+        dispatcher.checkout("L1");   // Payment L1: Rp 12500.0
     }
 }

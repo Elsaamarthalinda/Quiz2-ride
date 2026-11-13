@@ -9,8 +9,5 @@ package id.ac.polinema.quiz2;
  */
 public interface Insurable {
 
-    /**
-     * @return biaya asuransi perjalanan dalam Rupiah
-     */
     double insuranceFee();
 }
